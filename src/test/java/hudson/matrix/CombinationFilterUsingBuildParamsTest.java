@@ -36,7 +36,6 @@ import hudson.matrix.listeners.MatrixBuildListener;
 import hudson.model.AbstractItem;
 import hudson.model.BuildListener;
 import hudson.model.Cause;
-import hudson.model.Node;
 import hudson.model.ParametersAction;
 import hudson.model.Result;
 import hudson.model.Run;
@@ -51,8 +50,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import jenkins.model.Jenkins;
-
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.jenkinsci.plugins.scriptsecurity.sandbox.Whitelist;
 import org.jenkinsci.plugins.scriptsecurity.sandbox.whitelists.BlanketWhitelist;
@@ -64,6 +61,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.verification.VerificationMode;
 import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
@@ -74,6 +72,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({MatrixBuildListener.class, MatrixProject.class, AbstractItem.class, Whitelist.class})
+@PowerMockIgnore({"javax.xml.*"})
 public class CombinationFilterUsingBuildParamsTest {
 
     /**

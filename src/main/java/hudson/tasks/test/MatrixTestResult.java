@@ -52,19 +52,19 @@ public class MatrixTestResult extends AggregatedTestResultAction {
      */
     @Override
     protected String getChildName(AbstractTestResultAction tr) {
-        return tr.owner.getProject().getName();
+        return tr.run.getParent().getName();
     }
 
     @Override
     public AbstractBuild<?,?> resolveChild(Child child) {
-        MatrixBuild b = (MatrixBuild)owner;
+        MatrixBuild b = (MatrixBuild)run;
         return b.getProject().getItem(Combination.fromString(child.name)).getBuildByNumber(child.build);
     }
 
     @Override
     public String getTestResultPath(TestResult it) {
         // Prepend Configuration path
-        return it.getOwner().getParent().getShortUrl() + super.getTestResultPath(it);
+        return it.getRun().getParent().getShortUrl() + super.getTestResultPath(it);
     }
 
     /* We are required to override and call super since the parent class is in
