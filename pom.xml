@@ -27,7 +27,7 @@
         <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
         <url>https://github.com/jenkinsci/${project.artifactId}-plugin</url>
-      <tag>HEAD</tag>
+      <tag>matrix-project-1.14.1</tag>
   </scm>
     <repositories>
         <repository>
@@ -108,7 +108,7 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <argLine>-XX:MaxPermSize=128m</argLine>
+                    <argLine>-javaagent:appmap.jar -XX:MaxPermSize=128m</argLine>
                 </configuration>
             </plugin>
         </plugins>
