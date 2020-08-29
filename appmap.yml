@@ -1,0 +1,4 @@
+name: jenkins-plugin-matrix-project
+packages:
+- path: jenkins
+- path: hudson
